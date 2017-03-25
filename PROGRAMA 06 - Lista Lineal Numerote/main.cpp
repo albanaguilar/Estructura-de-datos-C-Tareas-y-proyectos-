@@ -31,7 +31,7 @@ class ListaLineal
  L.meterInicioLista(sS[iK] - 48);
  return is;
  }
- friend ListaLineal operator + (const ListaLineal &L1, const ListaLineal &L2){
+ /*friend ListaLineal operator + (const ListaLineal &L1, const ListaLineal &L2){
     Nodo L3;
     Nodo *p1 = L1.pInicio;
     Nodo *p2 = L2.pInicio;
@@ -52,7 +52,7 @@ class ListaLineal
         dato = *p1 + *p2;
     }
 
-}
+}*/
 private:
  Nodo *pInicio;
 public:
@@ -60,9 +60,9 @@ public:
  ListaLineal() { pInicio = NULL; }
  ListaLineal ( const ListaLineal &L){
      pInicio = NULL;
-    int p;
+    int *p;
     while ( p != NULL ){
-        meterFinalLista(p -> iInfo);
+        meterFinalLista( p -> iInfo);
         p = p -> pSig;
     }
  }
