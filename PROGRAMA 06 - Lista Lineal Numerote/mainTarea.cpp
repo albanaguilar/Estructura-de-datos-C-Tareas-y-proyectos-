@@ -67,7 +67,7 @@ class ListaLineal
 
         }
 
-        while(p1 !=NULL)
+        while(p2 !=NULL)
         {
             idato=iCarry+p1->iInfo;
             if(idato>=10)
