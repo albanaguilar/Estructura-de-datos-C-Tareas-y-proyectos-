@@ -112,14 +112,10 @@ public:
     void borraValor(int valor){
         Nodo *pP = pInicio;
         Nodo *pQ = NULL;
-        while ( pP != NULL ){
-            if ( pP ->iInfo == valor){
-                pQ = pP;
-                pP = pP ->pSig;
-                delete pQ;
-            }
-            else
-                pP = pP ->pSig;
+        while ( pP != NULL && pP ->iInfo == valor){
+            pQ = pP;
+            pP = pP ->pSig;
+            delete pQ;
         }
     }
 
@@ -131,6 +127,7 @@ public:
                 pQ = pP;
                 pP = pP ->pSig;
                 delete pQ;
+                pQ = NULL;
             }
             else
                 pP = pP ->pSig;
