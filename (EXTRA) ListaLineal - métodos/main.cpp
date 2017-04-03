@@ -109,29 +109,31 @@ public:
         delete pAct;
     }
 
-    friend void borraValor(int valor){
+    void borraValor(int valor){
         Nodo *pP = pInicio;
-        Nodo *pQ;
+        Nodo *pQ = NULL;
         while ( pP != NULL ){
-            if ( pP ->pSig ->iInfo == valor){
-                pQ = pP ->pSig;
-                pP ->pSig = pQ ->pSig;
+            if ( pP ->iInfo == valor){
+                pQ = pP;
+                pP = pP ->pSig;
                 delete pQ;
             }
-            pP = pP ->pSig;
+            else
+                pP = pP ->pSig;
         }
     }
 
-    friend void borraTodosValor(int valor){
+    void borraTodosValor(int valor){
         Nodo *pP = pInicio;
-        Nodo *pQ;
+        Nodo *pQ = NULL;
         while ( pP != NULL ){
-            if ( pP ->pSig ->iInfo == valor){
-                pQ = pP ->pSig;
-                pP ->pSig = pQ ->pSig;
+            if ( pP ->iInfo == valor){
+                pQ = pP;
+                pP = pP ->pSig;
                 delete pQ;
             }
-            pP = pP ->pSig;
+            else
+                pP = pP ->pSig;
         }
     }
 
