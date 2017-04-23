@@ -109,25 +109,45 @@ public:
         delete pAct;
     }
 
+    /*borra el nodo con el valor quese manda*/
     void borraValor(int valor){
         Nodo *pP = pInicio;
         Nodo *pQ = NULL;
-        while ( pP != NULL && pP ->iInfo == valor){
-            pQ = pP;
-            pP = pP ->pSig;
-            delete pQ;
-        }
-    }
-
-    void borraTodosValor(int valor){
-        Nodo *pP = pInicio;
-        Nodo *pQ = NULL;
         while ( pP != NULL ){
-            if ( pP ->iInfo == valor){
+            if (pP ->iInfo == valor){
                 pQ = pP;
                 pP = pP ->pSig;
                 delete pQ;
+            }
+            else if (pP ->iInfo != valor)
+                pP = pP ->pSig;
+        }
+    }
+
+    //Borra todos los nodos con un mismo valor que se pasa por parameto
+    void borraTodosValor(int valor){
+        Nodo *pP = pInicio;
+        Nodo *pQ = NULL;
+
+        while( pP == pInicio ){
+            if( pP ->iInfo == valor ){
+                pQ = pP;
+                pP = pP ->pSig;
+                pInicio = pP;
+                delete pQ;
                 pQ = NULL;
+            }
+            else{
+                pQ = pP;
+                pP = pP ->pSig;
+            }
+        }
+
+        while ( pP != NULL ){
+            if ( pP ->iInfo == valor){
+                pQ ->pSig = pP ->pSig;
+                delete pP;
+                pP = pQ ->pSig;
             }
             else
                 pP = pP ->pSig;
@@ -140,11 +160,11 @@ public:
         Nodo *pP = L1.pInicio;
         Nodo *pQ = L2.pInicio;
         while(pP != NULL){
-            iAcum1 += pP ->iInfo;
+            iAcum1 = iAcum1 + 1;
             pP = pP -> pSig;
         }
         while( pQ != NULL){
-            iAcum2 += pQ -> iInfo;
+            iAcum2 = iAcum2 + 1;
             pQ = pQ -> pSig;
         }
         return (iAcum1 < iAcum2);
